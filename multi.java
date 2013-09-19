@@ -75,4 +75,24 @@ public class multi {
 		reverseRow(x, 1);
 		return x;
 	}
+	
+	private static int[][] rectangularize(int[] a, int rows, int columns) {
+		if (rows * columns != a.length) {
+			throw new IllegalArgumentException("Row and column dimensions must match array size.");
+		}
+
+		int[][] b = new int[rows][columns];
+
+		for (int i = 0, r = 0, c = 0; i < a.length ; i++) {
+			b[r][c] = a[i];
+
+			if (c < columns - 1) {
+				c++;
+			} else {
+				c = 0;
+				r++;
+			}
+		}
+		return b;
+	}
 }
